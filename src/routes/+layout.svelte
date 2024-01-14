@@ -4,14 +4,14 @@
 	import { getDoc, doc, setDoc } from 'firebase/firestore';
 	import { authStore } from '../store/store';
 
-	const nonAuthRoutes = ['/auth', '/'];
+	const AuthRoutes = ['/user-dashboard'];
 
 	onMount(() => {
 		console.log('Mounting');
 		const unsubscribe = auth.onAuthStateChanged(async (user) => {
 			const currentPath = window.location.pathname;
 
-			if (!user && !nonAuthRoutes.includes(currentPath)) {
+			if (!user && AuthRoutes.includes(currentPath)) {
 				window.location.href = '/';
 				return;
 			}
