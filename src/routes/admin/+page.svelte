@@ -157,41 +157,4 @@
 		gap: 8px;
 		flex: 1;
 	}
-
-	.enterTodo {
-		display: flex;
-		align-items: stretch;
-		border: 1px solid #0891b2;
-		border-radius: 5px;
-		overflow: hidden;
-	}
-
-	.errorBorder {
-		border-color: coral !important;
-	}
-
-	.enterTodo input {
-		background: transparent;
-		border: none;
-		padding: 14px;
-		color: white;
-		flex: 1;
-	}
-
-	.enterTodo input:focus {
-		outline: none;
-	}
-
-	.enterTodo button {
-		padding: 0 28px;
-		background: #003c5b;
-		border: none;
-		color: cyan;
-		font-weight: 600;
-		cursor: pointer;
-	}
-
-	.enterTodo button:hover {
-		background: transparent;
-	}
 </style>
