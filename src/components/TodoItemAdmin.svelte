@@ -10,6 +10,7 @@
 		{index + 1}. {todo}
 	</p>
 	<div class="actions">
+		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<i
 			on:click={() => {
 				editTodo(index);
@@ -17,6 +18,7 @@
 			on:keydown={() => {}}
 			class="fa-regular fa-pen-to-square"
 		/>
+		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<i
 			on:click={() => {
 				removeTodo(index);
