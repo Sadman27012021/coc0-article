@@ -1,7 +1,7 @@
 <script>
 	import { db } from '../../lib/firebase';
 	import { authHandlers, authStore } from '../../store/store';
-	import { getDoc, doc, setDoc } from 'firebase/firestore';
+	import { doc, setDoc } from 'firebase/firestore';
 	import TodoItem from '../../components/TodoItemAdmin.svelte';
 	import { PUBLIC_DB_KEY } from '$env/static/public';
 	let form = true;
@@ -20,20 +20,10 @@
 
 	let todoList = [];
 	let currTodo = '';
-	let error = false;
 
 	authStore.subscribe((curr) => {
 		todoList = curr.data.todos;
 	});
-
-	function addTodo() {
-		error = false;
-		if (!currTodo) {
-			error = true;
-		}
-		todoList = [...todoList, currTodo];
-		currTodo = '';
-	}
 
 	function editTodo(index) {
 		let newTodoList = [...todoList].filter((val, i) => {
