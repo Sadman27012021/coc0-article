@@ -23,7 +23,7 @@
 
 	async function saveTodos() {
 		try {
-			const userRef = doc(db, 'users', $authStore.user.uid);
+			const userRef = doc(db, 'users', $authStore.user.email);
 			await setDoc(
 				userRef,
 				{
