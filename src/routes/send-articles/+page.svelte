@@ -3,7 +3,6 @@
 	import { authHandlers, authStore } from '../../store/store';
 	import { doc, setDoc } from 'firebase/firestore';
 	import TodoItem from '../../components/TodoItem.svelte';
-
 	let todoList = [];
 	let currTodo = '';
 	let error = false;
@@ -31,6 +30,7 @@
 				},
 				{ merge: true }
 			);
+			colList = colList.append($authStore.user.email);
 		} catch (err) {
 			console.log('There was an error saving your information');
 		}
