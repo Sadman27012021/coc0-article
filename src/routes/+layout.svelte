@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { auth, db } from '../lib/firebase';
-	import { getDoc, doc, setDoc } from 'firebase/firestore';
+	import { getDoc, doc, setDoc, updateDoc } from 'firebase/firestore';
 	import { authStore } from '../store/store';
 
 	const AuthRoutes = ['/user-dashboard'];
@@ -26,6 +26,7 @@
 			}
 
 			let dataToSetToStore;
+			const listRef = doc(db, 'ref', 'colRef');
 			const docRef = doc(db, 'users', user.email);
 			const docSnap = await getDoc(docRef);
 			if (!docSnap.exists()) {
@@ -41,6 +42,25 @@
 				const userData = docSnap.data();
 				dataToSetToStore = userData;
 			}
+			getDoc(listRef)
+				.then((docSnapshot) => {
+					if (docSnapshot.exists() && !docSnapshot.data().array.includes(user.email)) {
+						console.log(user.email);
+						const existingArray = docSnapshot.data().array || [];
+						const updatedArray = [...existingArray, user.email];
+
+						// Update the 'array' field
+						return updateDoc(listRef, { array: updatedArray });
+					} else {
+						console.log('Document does not exist.');
+					}
+				})
+				.then(() => {
+					console.log('Element added successfully!');
+				})
+				.catch((error) => {
+					console.error('Error adding element:', error);
+				});
 
 			authStore.update((curr) => {
 				return {

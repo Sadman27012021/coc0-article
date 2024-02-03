@@ -30,12 +30,10 @@
 				},
 				{ merge: true }
 			);
-			colList = colList.append($authStore.user.email);
 		} catch (err) {
 			console.log('There was an error saving your information');
 		}
 	}
-	console.log($authStore.loading);
 </script>
 
 {#if !$authStore.loading}
