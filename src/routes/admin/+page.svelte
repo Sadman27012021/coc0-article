@@ -1,6 +1,6 @@
 <script>
 	import { db } from '../../lib/firebase';
-	import { authHandlers, authStore } from '../../store/store';
+	import { authStore } from '../../store/store';
 	import { doc, setDoc } from 'firebase/firestore';
 	import TodoItem from '../../components/TodoItemAdmin.svelte';
 	import { PUBLIC_DB_KEY } from '$env/static/public';
